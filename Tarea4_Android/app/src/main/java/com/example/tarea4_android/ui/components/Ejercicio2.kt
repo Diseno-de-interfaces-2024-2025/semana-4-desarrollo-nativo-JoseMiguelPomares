@@ -1,9 +1,11 @@
 package com.example.tarea4_android.ui.components
 
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -20,14 +22,14 @@ fun MyButtonText(modifier: Modifier = Modifier){
     Column(modifier) {
         Button(onClick = { cambiarBoton = "Boton pulsado" },
         ) {
-
+            Text(cambiarBoton)
 
         }
     }
 }
 
 @Composable
-fun MyButtonColor(name: String, backgroundColor: Color, modifier: Modifier = Modifier){
+fun MyButtonColor(name: String, color: Color, modifier: Modifier = Modifier){
     var buttonText by remember { mutableStateOf(name) }
     var buttonColor by remember { mutableStateOf(Color.DarkGray) }
     var borderWidth by remember { mutableStateOf(1.dp) }
@@ -38,13 +40,14 @@ fun MyButtonColor(name: String, backgroundColor: Color, modifier: Modifier = Mod
         Button(
             onClick = {
                 buttonText = "Botón pulsado"
-                buttonColor = backgroundColor
+                buttonColor = color
                 borderWidth = 3.dp
                 cornerRadius = 4.dp
                 textColor = Color.Black
+                Modifier.background(buttonColor)
             },
 
-            //colors = Color.Black,
+            colors = ButtonDefaults.buttonColors(buttonColor),
             shape = RoundedCornerShape(cornerRadius),
             border = BorderStroke(borderWidth, Color.Black)
         ) {
