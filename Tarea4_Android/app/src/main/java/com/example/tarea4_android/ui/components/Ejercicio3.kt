@@ -1,5 +1,6 @@
 package com.example.tarea4_android.ui.components
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -25,30 +26,36 @@ fun Login(name: String, modifier: Modifier = Modifier){
     var contraseña by remember { mutableStateOf("") }
     var botonPulsado by remember { mutableStateOf(false) }
     Box(Modifier.fillMaxSize(), contentAlignment = Alignment.Center){
-        Column(modifier) {
-            TextField(
-                value = usuario,
-                onValueChange = { usuario = it },
-                label = { Text("Usuario") }
-            )
+        Column(modifier.fillMaxWidth()) {
+            Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center){
+                TextField(
+                    value = usuario,
+                    onValueChange = { usuario = it },
+                    label = { Text("Usuario") }
+                )
+            }
             Spacer(Modifier.height(20.dp))
-            TextField(
-                value = contraseña,
-                onValueChange = { contraseña = it },
-                label = { Text("Contraseña") },
-            )
+            Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center){
+                TextField(
+                    value = contraseña,
+                    onValueChange = { contraseña = it },
+                    label = { Text("Contraseña") },
+                )
+            }
+            Spacer(Modifier.height(20.dp))
+            Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center){
+                if (usuario == "admin" && contraseña == "1234" && botonPulsado)
+                    Text("Usuario Correcto", color = Color.Green)
+                else if (usuario != "admin" && contraseña != "1234" && botonPulsado)
+                    Text("Usuario Incorrecto", color = Color.Red)
+            }
             Spacer(Modifier.height(20.dp))
             Box(Modifier.fillMaxWidth(), contentAlignment = Alignment.Center){
                 Button(onClick = { botonPulsado = !botonPulsado }
                 ) {
                     Text("Acceder")
                 }
-                if (usuario == "admin" && contraseña == "1234" && botonPulsado)
-                    Text("Usuario Correcto", color = Color.Green)
-                else if (usuario != "admin" && contraseña != "1234" && botonPulsado)
-                    Text("Usuario Incorrecto", color = Color.Red)
             }
-
         }
     }
 }
