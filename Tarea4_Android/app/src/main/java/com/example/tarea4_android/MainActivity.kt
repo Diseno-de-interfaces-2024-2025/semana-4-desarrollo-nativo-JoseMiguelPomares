@@ -30,6 +30,7 @@ import androidx.compose.ui.unit.sp
 import com.example.tarea4_android.ui.components.Login
 import com.example.tarea4_android.ui.components.MyButtonColor
 import com.example.tarea4_android.ui.components.MyButtonText
+import com.example.tarea4_android.ui.components.Screen
 import com.example.tarea4_android.ui.theme.Tarea4_AndroidTheme
 
 class MainActivity : ComponentActivity() {
@@ -39,8 +40,8 @@ class MainActivity : ComponentActivity() {
         setContent {
             Tarea4_AndroidTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Login(
-                        name = "Button",
+                    Screen(
+                        //name = "Button",
                         //color = Color.Cyan,
                         modifier = Modifier.padding(innerPadding)
                     )
